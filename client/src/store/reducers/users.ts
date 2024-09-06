@@ -10,7 +10,7 @@ const initialState = {
 const userReducer = (
   state: IUserReduser = initialState,
   action: IAction
-): IUserReduser => {
+) => {
   switch (action.type) {
     case userEnums.ADD_USER:
       return {

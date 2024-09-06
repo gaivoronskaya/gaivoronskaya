@@ -9,6 +9,6 @@ export interface IUserReduser {
 
 export interface IAction {
   type: string;
-  payload?: IUser;
+  payload?: any;
   error?: errorType;
 }

@@ -1,7 +1,7 @@
-import { IUser } from "./IUser";
+// import { IUser } from "./IUser";
 
-export interface IUserActionTypes {
-  type: string;
-  payload?: IUser;
-  error?: string;
-}
+// export interface IUserActionTypes {
+//   type: string;
+//   payload?: IUser;
+//   error?: string;
+// }

@@ -17,7 +17,9 @@ export const addNewUser = (user: IUser) => {
       dispatch(startAddUser());
       const newUser = await createNewUser(user);
 
-      localStorage.setItem("accessToken", newUser.accessToken);
+      if (newUser.accessToken) {
+        localStorage.setItem("accessToken", newUser.accessToken);
+      }
       dispatch(successAddUser(newUser));
     } catch (error) {
       const errorText =
