@@ -5,7 +5,10 @@ import {
   StartRefreshToken,
   SuccessRefreshToken,
   ErrorRefreshToken,
-} from "./interface";
+  StartLoginUserAction,
+  SuccessLoginUserAction,
+  ErrorLoginUserAction,
+} from "./interfaces";
 
 export type UserActionTypes =
   | StartAddUserAction
@@ -13,4 +16,7 @@ export type UserActionTypes =
   | ErrorAddUserAction
   | StartRefreshToken
   | SuccessRefreshToken
-  | ErrorRefreshToken;
+  | ErrorRefreshToken
+  | StartLoginUserAction
+  | SuccessLoginUserAction
+  | ErrorLoginUserAction;

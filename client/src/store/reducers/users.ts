@@ -1,5 +1,5 @@
 import userEnums from "../enums/users.ts";
-import { IUserReduser, IAction } from "./interface";
+import { IUserReduser, IAction } from "./interfaces.ts";
 
 const initialState = {
   user: {},
@@ -7,10 +7,7 @@ const initialState = {
   isAuth: false,
 };
 
-const userReducer = (
-  state: IUserReduser = initialState,
-  action: IAction
-) => {
+const userReducer = (state: IUserReduser = initialState, action: IAction) => {
   switch (action.type) {
     case userEnums.ADD_USER:
       return {
@@ -47,6 +44,21 @@ const userReducer = (
         ...state,
         error: action.error,
         isAuth: false,
+      };
+    case userEnums.LOGIN_USER:
+      return {
+        ...state,
+        error: null,
+      };
+    case userEnums.LOGIN_USER_SUCCESS:
+      return {
+        isAuth: true,
+        error: null,
+      };
+    case userEnums.LOGIN_USER_ERROR:
+      return {
+        isAuth: false,
+        error: action.error,
       };
 
     default:

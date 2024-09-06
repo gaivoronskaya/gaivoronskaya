@@ -1,5 +1,6 @@
 import React from "react";
-import { IHeader } from "./interface.ts";
+import { useHeaderContext } from "../../context/index.tsx";
+import { IHeader } from "./interfaces.ts";
 import {
   StyledHeaderContainer,
   StyledHeaderImage,
@@ -7,7 +8,8 @@ import {
   StyledHeader,
 } from "./style.ts";
 
-const Header: React.FC<IHeader> = ({ children, title }) => {
+const Header: React.FC<IHeader> = ({ children }) => {
+  const { title } = useHeaderContext();
   return (
     <StyledHeader>
       <StyledHeaderContainer>

@@ -1,6 +1,6 @@
 import React from "react";
 import CustomButton from "../UI/CustomButton/index.tsx";
-import { ICustomForm } from "./interface.ts";
+import { ICustomForm } from "./interfaces.ts";
 import {
   StyledFormContainer,
   StyledFormTitle,

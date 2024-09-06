@@ -27,3 +27,17 @@ export interface ErrorRefreshToken {
   type: typeof userEnums.REFRESH_TOKEN_ERROR;
   error: string;
 }
+
+export interface StartLoginUserAction {
+  type: typeof userEnums.LOGIN_USER;
+}
+
+export interface SuccessLoginUserAction {
+  type: typeof userEnums.LOGIN_USER_SUCCESS;
+  payload: any;
+}
+
+export interface ErrorLoginUserAction {
+  type: typeof userEnums.LOGIN_USER_ERROR;
+  error: string;
+}

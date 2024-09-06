@@ -7,7 +7,10 @@ import {
   StartRefreshToken,
   SuccessRefreshToken,
   ErrorRefreshToken,
-} from "./interface";
+  StartLoginUserAction,
+  SuccessLoginUserAction,
+  ErrorLoginUserAction,
+} from "./interfaces.ts";
 
 export const startAddUser = (): StartAddUserAction => ({
   type: userEnums.ADD_USER,
@@ -25,7 +28,7 @@ export const errorAddUser = (error: string): ErrorAddUserAction => ({
 
 export const startRefreshToken = (): StartRefreshToken => ({
   type: userEnums.REFRESH_TOKEN,
-})
+});
 
 export const successRefreshToken = (payload: IUser): SuccessRefreshToken => ({
   type: userEnums.REFRESH_TOKEN_SUCCESS,
@@ -35,4 +38,18 @@ export const successRefreshToken = (payload: IUser): SuccessRefreshToken => ({
 export const errorRefreshToken = (error: string): ErrorRefreshToken => ({
   type: userEnums.REFRESH_TOKEN_ERROR,
   error,
-})
+});
+
+export const startLoginUser = (): StartLoginUserAction => ({
+  type: userEnums.LOGIN_USER,
+});
+
+export const successLoginUser = (payload: IUser): SuccessLoginUserAction => ({
+  type: userEnums.LOGIN_USER_SUCCESS,
+  payload,
+});
+
+export const errorLoginUser = (error: string): ErrorLoginUserAction => ({
+  type: userEnums.LOGIN_USER_ERROR,
+  error,
+});

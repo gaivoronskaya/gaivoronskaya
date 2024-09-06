@@ -8,8 +8,15 @@ import {
   startRefreshToken,
   successRefreshToken,
   errorRefreshToken,
+  startLoginUser,
+  successLoginUser,
+  errorLoginUser,
 } from "../actions/users.ts";
-import { createNewUser, refreshToken } from "../../services/users.ts";
+import {
+  createNewUser,
+  refreshToken,
+  loginUser,
+} from "../../services/users.ts";
 
 export const addNewUser = (user: IUser) => {
   return async (dispatch: Dispatch<UserActionTypes>) => {
@@ -25,6 +32,24 @@ export const addNewUser = (user: IUser) => {
       const errorText =
         error instanceof Error ? error.message : "Unknown error occurred";
       dispatch(errorAddUser(errorText));
+    }
+  };
+};
+
+export const loginUserAction = (user: IUser) => {
+  return async (dispatch: Dispatch<UserActionTypes>) => {
+    try {
+      dispatch(startLoginUser());
+      const userLogin = await loginUser(user);
+
+      if (userLogin.accessToken) {
+        localStorage.setItem("accessToken", userLogin.accessToken);
+      }
+      dispatch(successLoginUser(userLogin));
+    } catch (error) {
+      const errorText =
+        error instanceof Error ? error.message : "Unknown error occurred";
+      dispatch(errorLoginUser(errorText));
     }
   };
 };

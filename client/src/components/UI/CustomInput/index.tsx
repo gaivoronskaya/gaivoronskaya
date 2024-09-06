@@ -1,5 +1,5 @@
 import React from "react";
-import { ICustomInput } from "./interface.ts";
+import { ICustomInput } from "./interfaces.ts";
 import {
   StyledCustomInput,
   StyledLabel,
