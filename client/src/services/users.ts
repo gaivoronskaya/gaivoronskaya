@@ -1,10 +1,6 @@
-import axios from "axios";
-import { baseURL } from "../constants.ts";
+import api from "../http/index.ts";
 import { IUser } from "../store/interfaces/IUser";
-
-const api = axios.create({
-  baseURL,
-});
+import { IRefreshTokenResponse } from "../store/interfaces/IRefreshTokenResponse.ts";
 
 export const createNewUser = async (user: IUser) => {
   const newUser = await api.post<IUser>("/users/signup", user);
@@ -13,7 +9,7 @@ export const createNewUser = async (user: IUser) => {
 };
 
 export const refreshToken = async () => {
-  const newToken = await api.get("/users/refresh");
+  const newToken = await api.get<IRefreshTokenResponse>("/users/refresh");
 
   return newToken.data;
 };

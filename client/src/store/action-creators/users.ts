@@ -1,5 +1,6 @@
 import { Dispatch } from "redux";
 import { IUser } from "../interfaces/IUser";
+import { IRefreshTokenResponse } from "../interfaces/IRefreshTokenResponse.ts";
 import { UserActionTypes } from "../actions/type";
 import {
   startAddUser,
@@ -17,9 +18,8 @@ export const addNewUser = (user: IUser) => {
       dispatch(startAddUser());
       const newUser = await createNewUser(user);
 
-      if (newUser.accessToken) {
-        localStorage.setItem("accessToken", newUser.accessToken);
-      }
+      localStorage.setItem("accessToken", newUser.accessToken);
+
       dispatch(successAddUser(newUser));
     } catch (error) {
       const errorText =
@@ -33,13 +33,13 @@ export const refreshTokenAction = () => {
   return async (dispatch: Dispatch<UserActionTypes>) => {
     try {
       dispatch(startRefreshToken());
-      const newToken = await refreshToken();
+      const newToken: IRefreshTokenResponse = await refreshToken();
 
       const newAccessToken = newToken.accessToken;
+
       localStorage.setItem("accessToken", newAccessToken);
 
       dispatch(successRefreshToken(newToken));
-      return newAccessToken;
     } catch (error: unknown) {
       const errorText =
         error instanceof Error ? error.message : "Unknown error occurred";

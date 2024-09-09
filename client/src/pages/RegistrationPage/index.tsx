@@ -9,8 +9,8 @@ import Header from "../../components/Header/index.tsx";
 import useFocus from "../../hooks/autoFocus.ts";
 import useAction from "../../hooks/useAction.ts";
 import { validateString } from "../../helpers/validate-string.ts";
-import { IUserState, IErrorInputState } from "./interface.ts";
-import { RootState } from "../../store/reducers/index.ts";
+import { IUserState } from "../../interfaces/index.ts";
+import { IUserReducer } from "../../store/reducers/interface.ts";
 
 const RegistrationPage: React.FC = () => {
   const [user, setUser] = useState<IUserState>({
@@ -18,15 +18,18 @@ const RegistrationPage: React.FC = () => {
     password: "",
     repeatPassword: "",
   });
-  const [inputError, setInputError] = useState<IErrorInputState>({
+  const [inputError, setInputError] = useState<IUserState>({
     login: "",
     password: "",
     repeatPassword: "",
   });
   const [isOpenSnackbar, setIsOpenSnackbar] = useState<boolean>(false);
+
   const { addNewUser } = useAction();
+
   const focusInput = useFocus();
-  const error = useSelector((state: RootState) => state.user.error);
+
+  const error = useSelector((state: IUserReducer) => state.error);
 
   useEffect(() => {
     if (error) {

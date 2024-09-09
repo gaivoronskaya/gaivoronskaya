@@ -1,5 +1,5 @@
 import userEnums from "../enums/users.ts";
-import { IUserReduser, IAction } from "./interface";
+import { IUserReducer, IAction } from "./interface";
 
 const initialState = {
   user: {},
@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const userReducer = (
-  state: IUserReduser = initialState,
+  state: IUserReducer = initialState,
   action: IAction
 ) => {
   switch (action.type) {
@@ -39,6 +39,10 @@ const userReducer = (
       };
     case userEnums.REFRESH_TOKEN_SUCCESS:
       return {
+        user: {
+          ...state.user,
+          accessToken: action.payload.accessToken,
+        },
         isAuth: true,
         error: null,
       };
