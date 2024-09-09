@@ -1,5 +1,5 @@
 import { errorType } from "./type";
-import { IUser } from "../interfaces/IUser";
+import { IUser, IAppointment } from "../interfaces/IUser";
 
 export interface IUserReduser {
   user?: IUser | {};
@@ -10,5 +10,10 @@ export interface IUserReduser {
 export interface IAction {
   type: string;
   payload?: any;
+  error?: errorType;
+}
+
+export interface IAppointmentsReduser {
+  appointments: [];
   error?: errorType;
 }

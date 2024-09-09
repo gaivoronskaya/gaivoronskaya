@@ -1,10 +1,5 @@
-import axios from "axios";
-import { baseURL } from "../constants.ts";
+import api from "../http/index.ts";
 import { IUser } from "../store/interfaces/IUser";
-
-const api = axios.create({
-  baseURL,
-});
 
 export const createNewUser = async (user: IUser) => {
   const newUser = await api.post<IUser>("/users/signup", user);

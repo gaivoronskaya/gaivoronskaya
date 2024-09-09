@@ -1,17 +1,27 @@
-import React from "react";
-import { useSelector } from "react-redux";
+
 import { Routes, Route, Navigate } from "react-router-dom";
 import RegistrationPage from "./pages/RegistrationPage/index.tsx";
 import LoginPage from "./pages/LoginPage/index.tsx";
-import { RootState } from "./store/reducers/index.ts";
+import MainPage from "./pages/MainPage/index.tsx";
+import AuthPage from "./hocs/AuthPage.tsx";
+import ProtectedPage from "./hocs/ProtectedPage.tsx";
 
 const App: React.FC = () => {
-  const isAth = useSelector((state: RootState) => state.user.isAuth);
-
   return (
     <Routes>
-      <Route path="/registration" element={<RegistrationPage />} />
-      <Route path="/login" element={<LoginPage />} />
+      <Route
+        path="/main"
+        element={<ProtectedPage wrappedComponent={<MainPage />} />}
+      />
+      <Route
+        path="/login"
+        element={<AuthPage wrappedComponent={<LoginPage />} />}
+      />
+      <Route
+        path="/registration"
+        element={<AuthPage wrappedComponent={<RegistrationPage />} />}
+      />
+      <Route path="*" element={<Navigate to="/login" replace />} />
     </Routes>
   );
 };

@@ -1,4 +1,6 @@
 import userEnums from "../enums/users.ts";
+import appointmentsEnums from "../enums/appointments.ts";
+import { IAppointment } from "../interfaces/IUser.ts";
 
 export interface StartAddUserAction {
   type: typeof userEnums.ADD_USER;
@@ -39,5 +41,19 @@ export interface SuccessLoginUserAction {
 
 export interface ErrorLoginUserAction {
   type: typeof userEnums.LOGIN_USER_ERROR;
+  error: string;
+}
+
+export interface StartGetAppointments  {
+  type: typeof appointmentsEnums.GET_APPOINTMENT;
+}
+
+export interface SuccessGetAppointments {
+  type: typeof appointmentsEnums.GET_APPOINTMENT_SUCCESS;
+  payload: IAppointment[];
+}
+
+export interface ErrorGetAppointments {
+  type: typeof appointmentsEnums.GET_APPOINTMENT_ERROR;
   error: string;
 }

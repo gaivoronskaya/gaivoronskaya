@@ -1,1 +1,1 @@
-export type typeInput = "text" | "password" | "data";
+export type typeInput = "text" | "password" | "date";

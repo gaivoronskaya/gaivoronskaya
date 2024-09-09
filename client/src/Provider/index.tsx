@@ -16,6 +16,9 @@ const HeaderProvider: React.FC<IHeaderProvider> = ({ children }) => {
       case "/registration":
         setTitle("Зарегистрироваться в системе");
         break;
+      case "/main":
+        setTitle("Приемы");
+        break;
       default:
         setTitle("HOSPITAL");
     }

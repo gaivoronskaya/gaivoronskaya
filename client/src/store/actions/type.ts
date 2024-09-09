@@ -8,6 +8,9 @@ import {
   StartLoginUserAction,
   SuccessLoginUserAction,
   ErrorLoginUserAction,
+  StartGetAppointments ,
+  SuccessGetAppointments,
+  ErrorGetAppointments,
 } from "./interfaces";
 
 export type UserActionTypes =
@@ -20,3 +23,8 @@ export type UserActionTypes =
   | StartLoginUserAction
   | SuccessLoginUserAction
   | ErrorLoginUserAction;
+
+export type AppointmentsActionTypes =
+  | StartGetAppointments 
+  | SuccessGetAppointments
+  | ErrorGetAppointments;
