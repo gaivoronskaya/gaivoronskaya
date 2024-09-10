@@ -1,5 +1,5 @@
-import userEnums from "../enums/users.ts";
-import { IUserReducer, IAction } from "./interface";
+import userEnums from "../enums/users";
+import { IUserStore, IAction } from "./interface";
 
 const initialState = {
   user: {},
@@ -8,7 +8,7 @@ const initialState = {
 };
 
 const userReducer = (
-  state: IUserReducer = initialState,
+  state: IUserStore = initialState,
   action: IAction
 ) => {
   switch (action.type) {

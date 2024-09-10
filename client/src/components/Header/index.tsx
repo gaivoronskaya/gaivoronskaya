@@ -1,11 +1,11 @@
 import React from "react";
-import { IHeader } from "./interface.ts";
+import { IHeader } from "./interface";
 import {
   StyledHeaderContainer,
   StyledHeaderImage,
   StyledHeaderTitle,
   StyledHeader,
-} from "./style.ts";
+} from "./style";
 
 const Header: React.FC<IHeader> = ({ children, title }) => {
   return (

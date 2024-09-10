@@ -1,6 +1,6 @@
-import userEnums from "../enums/users.ts";
-import { IUser } from "../interfaces/IUser.ts";
-import { IRefreshTokenResponse } from "../interfaces/IRefreshTokenResponse.ts";
+import userEnums from "../enums/users";
+import { IUser } from "../interfaces/IUser";
+import { IRefreshTokenResponse } from "../interfaces/IRefreshTokenResponse";
 
 export interface StartAddUserAction {
   type: typeof userEnums.ADD_USER;

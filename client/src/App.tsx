@@ -1,6 +1,5 @@
-import React from "react";
 import { Routes, Route } from "react-router-dom";
-import RegistrationPage from "./pages/RegistrationPage/index.tsx";
+import RegistrationPage from "./pages/RegistrationPage";
 
 const App: React.FC = () => {
   return (

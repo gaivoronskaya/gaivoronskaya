@@ -1,9 +1,9 @@
 import axios, { AxiosResponse, InternalAxiosRequestConfig } from "axios";
-import store from "../store/index.ts";
-import { refreshTokenAction } from "../store/action-creators/users.ts";
-import { errorRefreshToken } from "../store/actions/users.ts";
-import { baseURL } from "../constants.ts";
-import { IRefreshTokenResponse } from "../store/interfaces/IRefreshTokenResponse.ts";
+import store, { AppDispatch } from "../store";
+import { refreshTokenAction } from "../store/action-creators/users";
+import { errorRefreshToken } from "../store/actions/users";
+import { baseURL } from "../constants";
+import { IRefreshTokenResponse } from "../store/interfaces/IRefreshTokenResponse";
 
 export const api = axios.create({
   baseURL,
@@ -34,16 +34,16 @@ api.interceptors.response.use(
     ) {
       originalRequest._retry = true;
       try {
-        const { accessToken }: IRefreshTokenResponse = await store.dispatch(
-          refreshTokenAction() as any
+        const dispatch: AppDispatch = store.dispatch;
+        const { accessToken }: IRefreshTokenResponse = await dispatch(
+          refreshTokenAction()
         );
 
         originalRequest.headers.Authorization = `Bearer ${accessToken}`;
 
         return api.request(originalRequest);
-      } catch (refreshError: any) {
-        store.dispatch(errorRefreshToken(refreshError.message));
-        throw refreshError;
+      } catch (error) {
+        store.dispatch(errorRefreshToken(error.message));
       }
     }
 

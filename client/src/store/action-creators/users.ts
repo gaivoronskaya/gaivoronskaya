@@ -1,6 +1,6 @@
 import { Dispatch } from "redux";
 import { IUser } from "../interfaces/IUser";
-import { IRefreshTokenResponse } from "../interfaces/IRefreshTokenResponse.ts";
+import { IRefreshTokenResponse } from "../interfaces/IRefreshTokenResponse";
 import { UserActionTypes } from "../actions/type";
 import {
   startAddUser,
@@ -9,8 +9,8 @@ import {
   startRefreshToken,
   successRefreshToken,
   errorRefreshToken,
-} from "../actions/users.ts";
-import { createNewUser, refreshToken } from "../../services/users.ts";
+} from "../actions/users";
+import { createNewUser, refreshToken } from "../../services/users";
 
 export const addNewUser = (user: IUser) => {
   return async (dispatch: Dispatch<UserActionTypes>) => {

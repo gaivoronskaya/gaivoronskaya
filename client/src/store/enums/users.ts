@@ -6,6 +6,6 @@ const userEnums = {
   REFRESH_TOKEN: "REFRESH_TOKEN",
   REFRESH_TOKEN_SUCCESS: "REFRESH_TOKEN_SUCCESS",
   REFRESH_TOKEN_ERROR: "REFRESH_TOKEN_ERROR",
-} as const;
+};
 
 export default userEnums;

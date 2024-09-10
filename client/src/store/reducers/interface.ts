@@ -1,7 +1,7 @@
 import { errorType } from "./type";
 import { IUser } from "../interfaces/IUser";
 
-export interface IUserReducer {
+export interface IUserStore {
   user?: IUser | {};
   error?: errorType;
   isAuth: boolean;

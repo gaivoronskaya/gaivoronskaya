@@ -1,6 +1,6 @@
 import React from "react";
-import CustomButton from "../UI/CustomButton/index.tsx";
-import { ICustomForm } from "./interface.ts";
+import CustomButton from "../UI/CustomButton";
+import { ICustomForm } from "./interface";
 import {
   StyledFormContainer,
   StyledFormTitle,
@@ -9,7 +9,7 @@ import {
   StyledFormContent,
   StyledFormImage,
   StyledFormWrapper,
-} from "./style.ts";
+} from "./style";
 
 const Form: React.FC<ICustomForm> = ({
   title,
@@ -41,4 +41,5 @@ const Form: React.FC<ICustomForm> = ({
     </StyledFormWrapper>
   );
 };
+
 export default Form;

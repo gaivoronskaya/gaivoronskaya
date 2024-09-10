@@ -1,6 +1,6 @@
-import api from "../http/index.ts";
+import api from "../http";
 import { IUser } from "../store/interfaces/IUser";
-import { IRefreshTokenResponse } from "../store/interfaces/IRefreshTokenResponse.ts";
+import { IRefreshTokenResponse } from "../http/interfaces";
 
 export const createNewUser = async (user: IUser) => {
   const newUser = await api.post<IUser>("/users/signup", user);
