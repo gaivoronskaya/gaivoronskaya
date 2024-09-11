@@ -1,5 +1,6 @@
 import { Dispatch } from "redux";
 import { IUser } from "../interfaces/IUser";
+import { IRefreshTokenResponse } from "../interfaces/IRefreshTokenResponse";
 import { UserActionTypes } from "../actions/type";
 import {
   startAddUser,
@@ -11,12 +12,8 @@ import {
   startLoginUser,
   successLoginUser,
   errorLoginUser,
-} from "../actions/users.ts";
-import {
-  createNewUser,
-  refreshToken,
-  loginUser,
-} from "../../services/users.ts";
+} from "../actions/users";
+import { createNewUser, refreshToken, loginUser } from "../../services/users";
 
 export const addNewUser = (user: IUser) => {
   return async (dispatch: Dispatch<UserActionTypes>) => {
@@ -24,9 +21,8 @@ export const addNewUser = (user: IUser) => {
       dispatch(startAddUser());
       const newUser = await createNewUser(user);
 
-      if (newUser.accessToken) {
-        localStorage.setItem("accessToken", newUser.accessToken);
-      }
+      localStorage.setItem("accessToken", newUser.accessToken);
+
       dispatch(successAddUser(newUser));
     } catch (error) {
       const errorText =
@@ -42,9 +38,7 @@ export const loginUserAction = (user: IUser) => {
       dispatch(startLoginUser());
       const userLogin = await loginUser(user);
 
-      if (userLogin.accessToken) {
-        localStorage.setItem("accessToken", userLogin.accessToken);
-      }
+      localStorage.setItem("accessToken", userLogin.accessToken);
       dispatch(successLoginUser(userLogin));
     } catch (error) {
       const errorText =
@@ -58,13 +52,11 @@ export const refreshTokenAction = () => {
   return async (dispatch: Dispatch<UserActionTypes>) => {
     try {
       dispatch(startRefreshToken());
-      const newToken = await refreshToken();
+      const newToken: IRefreshTokenResponse = await refreshToken();
 
-      const newAccessToken = newToken.accessToken;
-      localStorage.setItem("accessToken", newAccessToken);
+      localStorage.setItem("accessToken", newToken.accessToken);
 
       dispatch(successRefreshToken(newToken));
-      return newAccessToken;
     } catch (error: unknown) {
       const errorText =
         error instanceof Error ? error.message : "Unknown error occurred";

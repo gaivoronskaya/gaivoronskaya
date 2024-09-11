@@ -10,6 +10,6 @@ const userEnums = {
   LOGIN_USER: "LOGIN_USER",
   LOGIN_USER_SUCCESS: "LOGIN_USER_SUCCESS",
   LOGIN_USER_ERROR: "LOGIN_USER_ERROR",
-} as const;
+};
 
 export default userEnums;

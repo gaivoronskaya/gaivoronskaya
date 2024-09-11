@@ -1,4 +1,4 @@
-import * as UserActionCreators from "./users.ts";
+import * as UserActionCreators from "./users";
 
 export default {
   ...UserActionCreators,

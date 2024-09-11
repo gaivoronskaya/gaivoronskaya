@@ -1,11 +1,11 @@
 import React from "react";
-import { ICustomInput } from "./interfaces.ts";
+import { ICustomInput } from "./interfaces";
 import {
   StyledCustomInput,
   StyledLabel,
   StyledInputContainer,
   StyledErrorText,
-} from "./style.ts";
+} from "./style";
 
 const CustomInput: React.FC<ICustomInput> = ({
   placeholder,

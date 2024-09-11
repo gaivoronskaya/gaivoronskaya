@@ -1,5 +1,6 @@
-import userEnums from "../enums/users.ts";
+import userEnums from "../enums/users";
 import { IUser } from "../interfaces/IUser";
+import { IRefreshTokenResponse } from "../interfaces/IRefreshTokenResponse";
 import {
   StartAddUserAction,
   SuccessAddUserAction,
@@ -10,7 +11,7 @@ import {
   StartLoginUserAction,
   SuccessLoginUserAction,
   ErrorLoginUserAction,
-} from "./interfaces.ts";
+} from "./interfaces";
 
 export const startAddUser = (): StartAddUserAction => ({
   type: userEnums.ADD_USER,
@@ -30,7 +31,7 @@ export const startRefreshToken = (): StartRefreshToken => ({
   type: userEnums.REFRESH_TOKEN,
 });
 
-export const successRefreshToken = (payload: IUser): SuccessRefreshToken => ({
+export const successRefreshToken = (payload: IRefreshTokenResponse): SuccessRefreshToken => ({
   type: userEnums.REFRESH_TOKEN_SUCCESS,
   payload,
 });

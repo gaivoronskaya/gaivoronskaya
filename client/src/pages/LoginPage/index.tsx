@@ -3,21 +3,21 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
-import Form from "../../components/Form/index.tsx";
-import CustomInput from "../../components/UI/CustomInput/index.tsx";
-import Header from "../../components/Header/index.tsx";
-import useFocus from "../../hooks/autoFocus.ts";
-import useAction from "../../hooks/useAction.ts";
-import { HeaderProvider } from "../../Provider/index.tsx";
-import { IUserState, IErrorInputState } from "../../interfaces/index.ts";
-import { RootState } from "../../store/reducers/index.ts";
+import Form from "../../components/Form/index";
+import CustomInput from "../../components/UI/CustomInput/index";
+import Header from "../../components/Header/index";
+import useFocus from "../../hooks/autoFocus";
+import useAction from "../../hooks/useAction";
+import { HeaderProvider } from "../../Provider/index";
+import { IUserState } from "../../interfaces/index";
+import { RootState } from "../../store/reducers/index";
 
 const LoginPage = () => {
   const [user, setUser] = useState<IUserState>({
     login: "",
     password: "",
   });
-  const [inputError, setInputError] = useState<IErrorInputState>({
+  const [inputError, setInputError] = useState<IUserState>({
     login: "",
     password: "",
   });

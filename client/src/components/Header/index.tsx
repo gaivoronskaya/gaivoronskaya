@@ -1,15 +1,15 @@
-import React from "react";
-import { useHeaderContext } from "../../context/index.tsx";
-import { IHeader } from "./interfaces.ts";
+import React, { useContext } from "react";
+import HeaderContext from "../../context";
+import { IHeader } from "./interfaces";
 import {
   StyledHeaderContainer,
   StyledHeaderImage,
   StyledHeaderTitle,
   StyledHeader,
-} from "./style.ts";
+} from "./style";
 
 const Header: React.FC<IHeader> = ({ children }) => {
-  const { title } = useHeaderContext();
+  const { title } = useContext(HeaderContext);
   return (
     <StyledHeader>
       <StyledHeaderContainer>
