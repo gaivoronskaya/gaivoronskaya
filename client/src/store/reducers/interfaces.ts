@@ -14,6 +14,11 @@ export interface IAction<T = any> {
   error?: errorType;
 }
 
+
+
+
+
+
 export interface IAppointmentsStore {
   appointments: IAppointments | [];
   error?: errorType;

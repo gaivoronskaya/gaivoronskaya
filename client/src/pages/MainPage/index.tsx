@@ -65,7 +65,7 @@ const MainPage = () => {
       });
 
       return;
-    }
+    } 
 
     if (!doctor.trim()) {
       setInputError({
