@@ -3,14 +3,14 @@ import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
-import Form from "../../components/Form/index";
-import CustomInput from "../../components/UI/CustomInput/index";
-import Header from "../../components/Header/index";
+import Form from "../../components/Form";
+import CustomInput from "../../components/UI/CustomInput";
+import Header from "../../components/Header";
 import useFocus from "../../hooks/autoFocus";
 import useAction from "../../hooks/useAction";
-import { HeaderProvider } from "../../Provider/index";
-import { IUserState } from "../../interfaces/index";
-import { RootState } from "../../store/reducers/index";
+import { HeaderProvider } from "../../Provider";
+import { IUserState } from "../../interfaces";
+import { RootState } from "../../store/reducers";
 
 const LoginPage = () => {
   const [user, setUser] = useState<IUserState>({
