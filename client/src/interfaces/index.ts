@@ -3,3 +3,7 @@ export interface IUserState {
   password: string;
   repeatPassword?: string;
 }
+
+export interface IHeaderContext {
+  title: string;
+}

@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
@@ -8,29 +9,22 @@ import Header from "../../components/Header";
 import useFocus from "../../hooks/autoFocus";
 import useAction from "../../hooks/useAction";
 import { HeaderProvider } from "../../Provider";
-import { validateString } from "../../helpers/validate-string";
 import { IUserState } from "../../interfaces";
-import { IUserStore } from "../../store/reducers/interfaces";
+import { RootState } from "../../store/reducers";
 
-const RegistrationPage: React.FC = () => {
+const LoginPage = () => {
   const [user, setUser] = useState<IUserState>({
     login: "",
     password: "",
-    repeatPassword: "",
   });
   const [inputError, setInputError] = useState<IUserState>({
     login: "",
     password: "",
-    repeatPassword: "",
   });
-
   const [isOpenSnackbar, setIsOpenSnackbar] = useState<boolean>(false);
-
-  const { addNewUser } = useAction();
-
+  const error = useSelector((state: RootState) => state.user.error);
   const focusInput = useFocus();
-
-  const error = useSelector((state: IUserStore) => state.error);
+  const { loginUserAction } = useAction();
 
   useEffect(() => {
     if (error) {
@@ -47,40 +41,19 @@ const RegistrationPage: React.FC = () => {
     }
   };
 
-  const validateRegistration = (event: React.FormEvent<HTMLFormElement>) => {
+  const validateLogin = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const { login, password, repeatPassword } = user;
+    const { login, password } = user;
 
-    if (!validateString(login)) {
+    if (!login.trim() || !password.trim()) {
       setInputError({
-        ...inputError,
-        login: "Поле не может содержать меньше 6 символов или меньше 1 цифры",
+        login: !login ? "Поле не может быть пустым" : "",
+        password: !password ? "Поле не может быть пустым" : "",
       });
 
       return;
     }
-
-    if (!validateString(password)) {
-      setInputError({
-        ...inputError,
-        password:
-          "Поле не может содержать меньше 6 символов или меньше 1 цифры",
-      });
-
-      return;
-    }
-
-    if (!validateString(repeatPassword)) {
-      setInputError({
-        ...inputError,
-        repeatPassword:
-          "Поле не может содержать меньше 6 символов или меньше 1 цифры",
-      });
-
-      return;
-    }
-
-    addNewUser(user);
+    loginUserAction(user);
   };
 
   const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -107,12 +80,12 @@ const RegistrationPage: React.FC = () => {
         <Header />
       </HeaderProvider>
       <Form
-        title="Регистрация"
-        handleSubmit={validateRegistration}
+        title="Вход"
+        handleSubmit={validateLogin}
         handleChangeInput={handleChangeInput}
-        buttonTitle="Зарегистрироваться"
-        linkTitle="Авторизоваться"
-        path="/login"
+        buttonTitle="Войти"
+        linkTitle="Зарегистрироваться"
+        path="/registration"
       >
         <CustomInput
           label="Логин:"
@@ -133,18 +106,9 @@ const RegistrationPage: React.FC = () => {
           handleChangeInput={handleChangeInput}
           error={inputError.password}
         />
-        <CustomInput
-          label="Повторите пароль:"
-          placeholder="Пароль"
-          typeInput="password"
-          nameInput="repeatPassword"
-          valueInput={user.repeatPassword}
-          handleChangeInput={handleChangeInput}
-          error={inputError.repeatPassword}
-        />
       </Form>
     </div>
   );
 };
 
-export default RegistrationPage;
+export default LoginPage;

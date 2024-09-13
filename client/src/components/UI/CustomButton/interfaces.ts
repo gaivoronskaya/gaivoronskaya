@@ -6,6 +6,6 @@ export interface ICustomButton {
   nameButton: string;
   typeButton: typeButton;
   valueButton?: string;
-  handleActionButton: (event: React.MouseEvent<HTMLButtonElement>) => void;
+  handleActionButton?: (event: React.MouseEvent<HTMLButtonElement>) => void;
   classNameButton?: string;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { ICustomButton } from "./interface";
+import { ICustomButton } from "./interfaces";
 import { StyledCustomButton } from "./style";
 
 const CustomButton: React.FC<ICustomButton> = ({

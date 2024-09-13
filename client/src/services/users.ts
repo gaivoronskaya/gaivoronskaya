@@ -13,3 +13,9 @@ export const refreshToken = async () => {
 
   return newToken.data;
 };
+
+export const loginUser = async (user: IUser) => {
+  const userLogin = await api.post<IUser>("/users/signin", user);
+
+  return userLogin.data;
+};
