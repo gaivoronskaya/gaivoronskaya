@@ -1,10 +1,11 @@
-
+import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
-import RegistrationPage from "./pages/RegistrationPage/index.tsx";
-import LoginPage from "./pages/LoginPage/index.tsx";
-import MainPage from "./pages/MainPage/index.tsx";
-import AuthPage from "./hocs/AuthPage.tsx";
-import ProtectedPage from "./hocs/ProtectedPage.tsx";
+import RegistrationPage from "./pages/RegistrationPage";
+import LoginPage from "./pages/LoginPage";
+import MainPage from "./pages/MainPage";
+import AuthPage from "./hocs/AuthPage";
+import ProtectedPage from "./hocs/ProtectedPage";
+
 
 const App: React.FC = () => {
   return (

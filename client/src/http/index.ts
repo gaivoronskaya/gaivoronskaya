@@ -1,9 +1,8 @@
-import axios, { AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig  } from "axios";
-import store from "../store/index.ts";
-import { refreshTokenAction } from "../store/action-creators/users.ts";
-import { errorRefreshToken } from "../store/actions/users.ts";
-import { baseURL } from "../constants.ts";
-import { IRefreshTokenResponse } from "./interfaces";
+import axios, { AxiosResponse, InternalAxiosRequestConfig } from "axios";
+import store from "../store";
+import { refreshTokenAction } from "../store/action-creators/users";
+import { errorRefreshToken } from "../store/actions/users";
+import { baseURL } from "../constants";
 
 export const api = axios.create({
   baseURL,
@@ -23,7 +22,9 @@ api.interceptors.response.use(
     return response;
   },
   async (error) => {
-    const originalRequest = error.config as InternalAxiosRequestConfig & { _retry?: boolean };
+    const originalRequest = error.config as InternalAxiosRequestConfig & {
+      _retry?: boolean;
+    };
 
     if (
       error.response &&
@@ -32,14 +33,16 @@ api.interceptors.response.use(
     ) {
       originalRequest._retry = true;
       try {
-        const { accessToken }: IRefreshTokenResponse = await store.dispatch(refreshTokenAction() as any);
-        
-        originalRequest.headers.Authorization = `Bearer ${accessToken}`;
+        await store.dispatch(refreshTokenAction());
+        const newAccessToken = localStorage.getItem("accessToken");
 
-        return api.request(originalRequest);
-      } catch (refreshError: any) {
-        store.dispatch(errorRefreshToken(refreshError.message));
-        throw refreshError;
+        if (newAccessToken) {
+          originalRequest.headers.Authorization = `Bearer ${newAccessToken}`;
+          return api.request(originalRequest);
+        }
+      } catch (error) {
+        store.dispatch(errorRefreshToken(error.message));
+        throw error;
       }
     }
 

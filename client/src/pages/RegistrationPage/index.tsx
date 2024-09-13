@@ -1,17 +1,16 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
-import Form from "../../components/Form/index.tsx";
-import CustomInput from "../../components/UI/CustomInput/index.tsx";
-import Header from "../../components/Header/index.tsx";
-import useFocus from "../../hooks/autoFocus.ts";
-import useAction from "../../hooks/useAction.ts";
-import { HeaderProvider } from "../../Provider/index.tsx";
-import { validateString } from "../../helpers/validate-string.ts";
-import { IUserState, IErrorInputState } from "../../interfaces";
-import { RootState } from "../../store/reducers/index.ts";
+import Form from "../../components/Form/index";
+import CustomInput from "../../components/UI/CustomInput/index";
+import Header from "../../components/Header/index";
+import useFocus from "../../hooks/autoFocus";
+import useAction from "../../hooks/useAction";
+import { HeaderProvider } from "../../Provider/index";
+import { validateString } from "../../helpers/validate-string";
+import { IUserState } from "../../interfaces";
+import { IUserStore } from "../../store/reducers/interfaces";
 
 const RegistrationPage: React.FC = () => {
   const [user, setUser] = useState<IUserState>({
@@ -19,15 +18,19 @@ const RegistrationPage: React.FC = () => {
     password: "",
     repeatPassword: "",
   });
-  const [inputError, setInputError] = useState<IErrorInputState>({
+  const [inputError, setInputError] = useState<IUserState>({
     login: "",
     password: "",
     repeatPassword: "",
   });
+
   const [isOpenSnackbar, setIsOpenSnackbar] = useState<boolean>(false);
+
   const { addNewUser } = useAction();
+
   const focusInput = useFocus();
-  const error = useSelector((state: RootState) => state.user.error);
+
+  const error = useSelector((state: IUserStore) => state.error);
 
   useEffect(() => {
     if (error) {

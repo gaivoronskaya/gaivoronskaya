@@ -1,10 +1,10 @@
 import React from "react";
-import CustomButton from "../UI/CustomButton/index.tsx";
-import CustomSelector from "../UI/CustomSelector/index.tsx";
-import CustomInput from "../UI/CustomInput/index.tsx";
+import CustomButton from "../UI/CustomButton";
+import CustomSelector from "../UI/CustomSelector";
+import CustomInput from "../UI/CustomInput";
 import { IAddingAppointmentForm } from "./interfaces";
-import { doctorsOptions } from "../../constants.ts";
-import { StyledAppointmentContainer, StyledAddAppointmentForm } from "./style.ts";
+import { doctorsOptions } from "../../constants";
+import { StyledAppointmentContainer, StyledAddAppointmentForm } from "./style";
 
 const AddingAppointmentForm: React.FC<IAddingAppointmentForm> = ({
   appointment,

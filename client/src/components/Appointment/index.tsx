@@ -1,8 +1,8 @@
 import React from "react";
-import { IAppointment } from "./interfaces.ts";
-import CustomButton from "../UI/CustomButton/index.tsx";
-import { formatDate } from "../../helpers/formate-date.ts";
-import { StyledCell, StyledLineCell, StyledButtons } from "./style.ts";
+import { IAppointment } from "./interfaces";
+import CustomButton from "../UI/CustomButton";
+import { formatDate } from "../../helpers/formate-date";
+import { StyledCell, StyledLineCell, StyledButtons } from "./style";
 
 const Appointment: React.FC<IAppointment> = ({ appointment }) => {
   return (

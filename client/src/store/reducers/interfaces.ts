@@ -1,19 +1,20 @@
 import { errorType } from "./type";
-import { IUser, IAppointment } from "../interfaces/IUser";
+import { IAppointments } from "../interfaces/IAppointments";
+import { IUser } from "../interfaces/IUser";
 
-export interface IUserReduser {
+export interface IUserStore {
   user?: IUser | {};
   error?: errorType;
   isAuth: boolean;
 }
 
-export interface IAction {
+export interface IAction<T = any> {
   type: string;
-  payload?: any;
+  payload?: T;
   error?: errorType;
 }
 
-export interface IAppointmentsReduser {
-  appointments: [];
+export interface IAppointmentsStore {
+  appointments: IAppointments | [];
   error?: errorType;
-}
+} 

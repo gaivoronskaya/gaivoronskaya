@@ -2,14 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import Snackbar from "@mui/material/Snackbar";
 import Alert from "@mui/material/Alert";
-import useAction from "../../hooks/useAction.ts";
-import Header from "../../components/Header/index.tsx";
-import TableAppointment from "../../components/TableAppointment/index.tsx";
-import AddingAppointmentForm from "../../components/AddingAppointmentForm/index.tsx";
-import { HeaderProvider } from "../../Provider/index.tsx";
-import { IAppointmentsState, IErrorInputState } from "../../interfaces/index.ts";
-import { RootState } from "../../store/reducers/index.ts";
-import { StyledButtonExit } from "./style.ts";
+import useAction from "../../hooks/useAction";
+import Header from "../../components/Header";
+import TableAppointment from "../../components/TableAppointment";
+import AddingAppointmentForm from "../../components/AddingAppointmentForm";
+import { HeaderProvider } from "../../Provider";
+import { IAppointmentsState } from "../../interfaces";
+import { IAppointmentsStore } from "../../store/reducers/interfaces";
+import { StyledButtonExit } from "./style";
 
 const MainPage = () => {
   const [appointment, setAppointment] = useState<IAppointmentsState>({
@@ -18,7 +18,7 @@ const MainPage = () => {
     date: "",
     complaint: "",
   });
-  const [inputError, setInputError] = useState<IErrorInputState>({
+  const [inputError, setInputError] = useState<IAppointmentsState>({
     name: "",
     doctor: "",
     date: "",
@@ -31,8 +31,9 @@ const MainPage = () => {
     getUserAppointments,
   } = useAction();
 
-  const appointments = useSelector((state: RootState) => state.appointments.appointments);
-  const error = useSelector((state: RootState) => state.user.error);
+  const appointments = useSelector((state: IAppointmentsStore) => state.appointments.appointments);
+  const error = useSelector((state: IAppointmentsStore) => state.error);
+  console.log(appointments)
 
   useEffect(() => {
     if (error) {

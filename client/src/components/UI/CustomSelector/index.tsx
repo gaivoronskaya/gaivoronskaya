@@ -1,6 +1,6 @@
 import React from "react";
-import { ICustomSelector } from "./interfaces.ts";
-import { StyledSelector, StyledLabel, StyledSelectContainer } from "./style.ts";
+import { ICustomSelector } from "./interfaces";
+import { StyledSelector, StyledLabel, StyledSelectContainer } from "./style";
 
 const CustomSelector: React.FC<ICustomSelector> = ({
   valueSelector,

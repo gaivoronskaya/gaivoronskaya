@@ -1,12 +1,12 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import HeaderContext from "../context/index.tsx";
-import { IHeaderProvider } from "./interface.ts";
-import { IHeaderContext } from "../interfaces/index.ts";
+import HeaderContext from "../context/index";
+import { IHeaderProvider } from "./interface";
+import { IHeaderContext } from "../interfaces/index";
 
 const HeaderProvider: React.FC<IHeaderProvider> = ({ children }) => {
   const location = useLocation();
-  const [title, setTitle] = useState<string>("Default Header Title");
+  const [title, setTitle] = useState<string>("");
 
   useEffect(() => {
     switch (location.pathname) {
@@ -20,7 +20,7 @@ const HeaderProvider: React.FC<IHeaderProvider> = ({ children }) => {
         setTitle("Приемы");
         break;
       default:
-        setTitle("HOSPITAL");
+        setTitle("");
     }
   }, [location.pathname]);
 
@@ -33,8 +33,4 @@ const HeaderProvider: React.FC<IHeaderProvider> = ({ children }) => {
   );
 };
 
-const useHeaderContext = () => {
-  return useContext(HeaderContext);
-};
-
-export { HeaderProvider, useHeaderContext };
+export { HeaderProvider };

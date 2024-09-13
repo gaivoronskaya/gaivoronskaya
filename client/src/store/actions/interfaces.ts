@@ -1,6 +1,8 @@
-import userEnums from "../enums/users.ts";
-import appointmentsEnums from "../enums/appointments.ts";
-import { IAppointment } from "../interfaces/IUser.ts";
+import userEnums from "../enums/users";
+import appointmentsEnums from "../enums/appointments"
+import { IUser } from "../interfaces/IUser";
+import { IRefreshTokenResponse } from "../interfaces/IRefreshTokenResponse";;
+import { IAppointment } from "../interfaces/IUser";
 
 export interface StartAddUserAction {
   type: typeof userEnums.ADD_USER;
@@ -8,7 +10,7 @@ export interface StartAddUserAction {
 
 export interface SuccessAddUserAction {
   type: typeof userEnums.ADD_USER_SUCCESS;
-  payload: any;
+  payload: IUser;
 }
 
 export interface ErrorAddUserAction {
@@ -22,7 +24,7 @@ export interface StartRefreshToken {
 
 export interface SuccessRefreshToken {
   type: typeof userEnums.REFRESH_TOKEN_SUCCESS;
-  payload: any;
+  payload: IRefreshTokenResponse;
 }
 
 export interface ErrorRefreshToken {

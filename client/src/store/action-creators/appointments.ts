@@ -5,8 +5,8 @@ import {
   startGetAppointments,
   successGetAppointments,
   errorGetAppointments,
-} from "../actions/appointments.ts";
-import { getAppointments } from "../../services/appointments.ts";
+} from "../actions/appointments";
+import { getAppointments } from "../../services/appointments";
 
 export const getUserAppointments = () => {
   return async (dispatch: Dispatch<AppointmentsActionTypes>) => {

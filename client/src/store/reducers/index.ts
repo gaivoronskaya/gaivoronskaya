@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import userReducer from "./users.ts";
-import appointmentsReducer from "./appointments.ts";
+import userReducer from "./users";
+import appointmentsReducer from "./appointments";
 
 export const rootReducer = combineReducers({
   user: userReducer,

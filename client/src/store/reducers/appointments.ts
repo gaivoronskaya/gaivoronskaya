@@ -1,13 +1,13 @@
-import appointmentsEnums from "../enums/appointments.ts";
-import { IAppointmentsReduser, IAction } from "./interfaces";
+import appointmentsEnums from "../enums/appointments";
+import { IAppointmentsStore, IAction } from "./interfaces";
 
-const initialState: IAppointmentsReduser = {
+const initialState: IAppointmentsStore = {
   appointments: [],
   error: null,
 };
 
 const appointmentsReducer = (
-  state: IAppointmentsReduser = initialState,
+  state: IAppointmentsStore = initialState,
   action: IAction
 ) => {
   switch (action.type) {

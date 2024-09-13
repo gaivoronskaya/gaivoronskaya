@@ -1,5 +1,5 @@
-import * as UserActionCreators from "./users.ts";
-import * as AppontmentsActionCreators from "./appointments.ts"
+import * as UserActionCreators from "./users";
+import * as AppontmentsActionCreators from "./appointments"
 
 export default {
   ...UserActionCreators,

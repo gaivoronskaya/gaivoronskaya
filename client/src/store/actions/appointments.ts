@@ -1,5 +1,5 @@
-import appointmentsEnums from "../enums/appointments.ts";
-import { IAppointment } from "../interfaces/IUser.ts";
+import appointmentsEnums from "../enums/appointments";
+import { IAppointment } from "../interfaces/IUser";
 import {
   StartGetAppointments ,
   SuccessGetAppointments,

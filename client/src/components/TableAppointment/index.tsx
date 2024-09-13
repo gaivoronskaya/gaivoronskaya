@@ -1,8 +1,8 @@
 import React from "react";
-import { ITableAppointment } from "./interfaces.ts";
-import Appointment from "../Appointment/index.tsx";
-import { tableHeaders } from "../../constants.ts";
-import { StyledTable, StyledLine, StyledTitle, StyledCellsBody } from "./style.ts";
+import { ITableAppointment } from "./interfaces";
+import Appointment from "../Appointment";
+import { tableHeaders } from "../../constants";
+import { StyledTable, StyledLine, StyledTitle, StyledCellsBody } from "./style";
 
 const TableAppointment: React.FC<ITableAppointment> = ({ appointments }) => {
   return (
