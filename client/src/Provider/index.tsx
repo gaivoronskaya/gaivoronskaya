@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import HeaderContext from "../context/index";
+import HeaderContext from "../context";
 import { IHeaderProvider } from "./interface";
-import { IHeaderContext } from "../interfaces/index";
 
 const HeaderProvider: React.FC<IHeaderProvider> = ({ children }) => {
   const location = useLocation();
@@ -24,10 +23,8 @@ const HeaderProvider: React.FC<IHeaderProvider> = ({ children }) => {
     }
   }, [location.pathname]);
 
-  const contextValue: IHeaderContext = { title };
-
   return (
-    <HeaderContext.Provider value={contextValue}>
+    <HeaderContext.Provider value={{title}}>
       {children}
     </HeaderContext.Provider>
   );

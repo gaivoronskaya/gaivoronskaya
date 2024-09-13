@@ -3,4 +3,5 @@ export interface IAppointments {
   doctor: string;
   date: string;
   complaint: string;
+  _id: string;
 }

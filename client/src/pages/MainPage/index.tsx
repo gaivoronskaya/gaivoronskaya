@@ -33,7 +33,6 @@ const MainPage = () => {
 
   const appointments = useSelector((state: IAppointmentsStore) => state.appointments.appointments);
   const error = useSelector((state: IAppointmentsStore) => state.error);
-  console.log(appointments)
 
   useEffect(() => {
     if (error) {
