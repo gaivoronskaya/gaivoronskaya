@@ -30,6 +30,24 @@ const appointmentsReducer = (
         error: action.error,
       };
 
+    case appointmentsEnums.CREATE_APPOINTMENT:
+      return {
+        ...state,
+        error: null,
+      }
+
+    case  appointmentsEnums.CREATE_APPOINTMENT_SUCCESS:
+      return {
+        appointments: [...state.appointments, action.payload],
+        error: null,
+      }
+
+    case appointmentsEnums.CREATE_APPOINTMENT_ERROR:
+      return {
+        ...state,
+        error: action.error,
+      }
+
     default:
       return state;
   }

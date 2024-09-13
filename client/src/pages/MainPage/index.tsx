@@ -29,6 +29,7 @@ const MainPage = () => {
 
   const {
     getUserAppointments,
+    createAppointments,
   } = useAction();
 
   const appointments = useSelector((state: IAppointmentsStore) => state.appointments.appointments);
@@ -93,6 +94,8 @@ const MainPage = () => {
 
       return;
     }
+
+    createAppointments(appointment);
   };
 
   const handleChangeInput = (event: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {

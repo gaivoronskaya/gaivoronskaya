@@ -5,3 +5,9 @@ export const getAppointments = async () => {
 
   return appointments.data;
 };
+
+export const createNewAppointments = async (appointmentData) => {
+  const newAppointments = await api.post("/appointments", appointmentData);
+
+  return newAppointments.data;
+};

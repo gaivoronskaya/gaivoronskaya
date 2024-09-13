@@ -1,8 +1,8 @@
 import userEnums from "../enums/users";
 import appointmentsEnums from "../enums/appointments"
 import { IUser } from "../interfaces/IUser";
-import { IRefreshTokenResponse } from "../interfaces/IRefreshTokenResponse";;
-import { IAppointment } from "../interfaces/IUser";
+import { IRefreshTokenResponse } from "../interfaces/IRefreshTokenResponse";
+import { IAppointment } from "../interfaces/IUser";;
 
 export interface StartAddUserAction {
   type: typeof userEnums.ADD_USER;
@@ -57,5 +57,19 @@ export interface SuccessGetAppointments {
 
 export interface ErrorGetAppointments {
   type: typeof appointmentsEnums.GET_APPOINTMENT_ERROR;
+  error: string;
+}
+
+export interface StartCreateAppointments {
+  type: typeof appointmentsEnums.CREATE_APPOINTMENT;
+}
+
+export interface SuccessCreateAppointments {
+  type: typeof appointmentsEnums.CREATE_APPOINTMENT_SUCCESS;
+  payload: IAppointment[];
+}
+
+export interface ErrorCreateAppointments {
+  type: typeof appointmentsEnums.CREATE_APPOINTMENT_ERROR;
   error: string;
 }
